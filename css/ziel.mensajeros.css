@@ -1,0 +1,133 @@
+﻿.popover-title {
+    color: #9DEF52;
+    font-weight: bold;
+}
+
+.popover-content {
+    font-size: small;
+} 
+
+
+.ziel-label-footer {
+    font-size: small;
+}
+.ziel-label {
+    color: #9DEF52;
+}
+
+.ziel-label-bold {
+    color: #9DEF52;
+    font-weight: bold;
+}
+
+.ziel-button {
+    background-color: #9DEF52;
+    border: none;
+    color: darkslategray;
+    padding: 6px 6px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 4px;
+    width: 80%;
+    cursor: pointer;
+}
+    .ziel-button:focus {
+        color: darkslategray;
+    }
+
+    .ziel-button:active {
+        color: darkslategray;
+        text-decoration: none;
+    }
+    .ziel-button:visited {
+        color: darkslategray;
+        text-decoration: none;
+    }
+    .ziel-button:hover {
+        color: darkslategray;
+        text-decoration: none;
+    }
+
+.input-field {
+    position: relative;
+    width: 250px;
+    height: 44px;
+    line-height: 44px;
+    background-color: transparent;
+}
+.input-field-servicio {
+    position: relative;
+    width: 250px;
+    height: 34px;
+    line-height: 34px;
+    background-color: transparent;
+}
+label {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    color: #d3d3d3;
+    transition: 0.2s all;
+    background-color: transparent;
+}
+
+input {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    padding: 0;
+    color: lightgray;
+    border-bottom: 2px solid #d3d3d3;
+    background-color: transparent;
+}
+
+    input:focus,
+    input:valid {
+        border-color: #9DEF52;
+        background-color: transparent;
+    }
+
+        input:focus ~ label,
+        input:valid ~ label {
+            top: -24px;
+            color: #9DEF52;
+            background-color: transparent;
+        }
+
+.modal-dialog {
+    position: absolute;
+    top: 50px;
+    right: 0px;
+    bottom: 0;
+    left: 0;
+    z-index: 10040;
+    overflow: auto;
+    overflow-y: auto;
+}
+.modal-dialog-menu {
+    position: absolute;
+    top: -50px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 10040;
+    overflow: auto;
+    overflow-y: auto;
+    width: 80%;
+}
+.textarea-origen {
+    resize: none;
+    border: solid 1px;
+    border-color: #9DEF52;
+    background-color: transparent;
+    width: 100%;
+}
+.textarea-origen:focus {
+    resize: none;
+    border: solid 1px;
+    border-color: #9DEF52;
+    background-color: transparent;
+    width: 100%;
+}

@@ -1,0 +1,341 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!--
+        Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
+        For details, see http://go.microsoft.com/fwlink/?LinkID=617521
+    -->
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; media-src *; img-src 'self' data:">
+
+    <!--Java de Mensajeros usuario-->
+    <script src="../scripts/ziel-usuario.js"></script>
+    <script src="../scripts/ziel-redirect.js"></script>
+    <script src="../scripts/ziel-validator.js"></script>
+    <script src="../scripts/ziel-validator-registro.js"></script>
+    <!--Fin Java Mensajeros-->
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <link href="../lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <!--Estilo de Mensajeros-->
+    <link href="../css/ziel.mensajeros.css" rel="stylesheet" />
+    <link href="../css/ziel.mensajeros.registro.css" rel="stylesheet" />
+
+    <link href="../lib/Loading/loading.min.css" rel="stylesheet" />
+    <script src="../lib/Loading/jquery.loading.min.js"></script>
+    <script src="../lib/Loading/loading.min.js"></script>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <title>Mensajeros.co</title>
+</head>
+<body class="bg" style="background-repeat: initial !important;">
+   <div class="panel panel-default">
+        <p class="panel-body">
+            <form id='form_singup' method="POST">  
+            <div class="modal fade bs-example-modal-sm modal-dialog" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-exclamation-sign" style="font-size:x-large"></i>&nbsp;&nbsp;&nbsp;Información</h4>
+                        </div>
+                        <div class="modal-body small">
+                            <div id="modal-mensaje"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary center-block" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+            <div class="text-center">
+                <img id="profile-img" src="../images/LogoMediano.png" class="img-responsive center-block" alt="Responsive image" />
+                <span class="ziel-label-bold">Log-Up</span>
+            </div>
+            <br />
+            <div class="jumbotron">
+                <div class="container">
+                    <div class="box">
+                      <div id="part0" class="part0">
+                        <div class="form-group">
+                            <div class="col-lg-10">
+                                <table border="0" style="width:100%" cellpadding="2" cellspacing="4">
+                                    <tr>
+                                        <td><i class="glyphicon glyphicon-user"></i></td>
+                                        <td>&nbsp;&nbsp;</td>
+                                        <td>
+                                            <div class="input-field">
+                                                <input type="text" id="nombres"  name="Nombres" required onkeyup="validate();" 
+                                                Onblur="validate();"/>
+                                                <label for="nombres">Nombres:</label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div id="error-popover-nombres" style="display:none;">
+                                                <a href="#" title="Nombre" data-toggle="popover" data-placement="top" data-trigger="focus" data-content="el nombre no debe estar vacío."><i class="glyphicon glyphicon-remove-circle" style="color:red; font-size:x-large"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-10">
+                                <table border="0" style="width:100%" cellpadding="2" cellspacing="4">
+                                    <tr>
+                                        <td><i class="glyphicon glyphicon-user"></i></td>
+                                        <td>&nbsp;&nbsp;</td>
+                                        <td>
+                                            <div class="input-field">
+                                                <input type="text" id="apellidos" name="Apellidos" required onkeyup="validate();" 
+                                                Onblur="validate();"/>
+                                                <label for="apellidos">Apellidos:</label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div id="error-popover-apellidos" style="display:none;">
+                                                <a href="#" title="Apellidos" data-toggle="popover" data-placement="top" data-trigger="focus" data-content="El apellido no debe estar vacío."><i class="glyphicon glyphicon-remove-circle" style="color:red; font-size:x-large"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div><!--part0-->
+                    <div id="part1" class="part1">
+                            <div class="form-group">
+                                    <div class="col-lg-10">
+                                        <table border="0" style="width:100%" cellpadding="2" cellspacing="4">
+                                            <tr>
+                                                <td><i class="glyphicon glyphicon-envelope"></i></td>
+                                                <td>&nbsp;&nbsp;</td>
+                                                <td>
+                                                    <div class="input-field">
+                                                        <input type="hidden" name="Cedula" value="0001"/>
+                                                        <input type="hidden" name="DireccionPrincipal"  value="0001"/>
+                                                        <input type="hidden" id="usuario" name="Usuario"/>
+                                                        <input type="text" id="correo" onkeyup="validate();" name="Correo"
+                                                        required Onblur="validate();"/>
+                                                        <label for="correo">Correo:</label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div id="error-popover-correo" style="display:none;">
+                                                        <a href="#" title="Correo" data-toggle="popover" data-placement="top" data-trigger="focus" data-content="El correo ingresado contiene una sintaxis incorrecta."><i class="glyphicon glyphicon-remove-circle" style="color:red; font-size:x-large"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    <table border="0" style="width:100%" cellpadding="2" cellspacing="4">
+                                        <tr>
+                                            <td><i class="glyphicon glyphicon-phone"></i></td>
+                                            <td>&nbsp;&nbsp;</td>
+                                            <td>
+                                                <div class="input-field">
+                                                    <input type="tel" id="cel" Onblur="return validate();" required onkeyup="validate();" name="Telefono"/>
+                                                    <label for="cel">Celular:</label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div id="error-popover-cel" style="display:none;">
+                                                    <a href="#" title="Celular" data-toggle="popover" data-placement="top" data-trigger="focus" data-content="El numero celular, debe tener almenos 10 digitos e iniciar con el numero 3"><i class="glyphicon glyphicon-remove-circle" style="color:red; font-size:x-large"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div><!--part1-->
+                        <div id="part2"  class="part2">
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    <table border="0" style="width:100%" cellpadding="2" cellspacing="4">
+                                        <tr>
+                                            <td><i class="glyphicon glyphicon-lock"></i></td>
+                                            <td>&nbsp;&nbsp;</td>
+                                            <td>
+                                                <div class="input-field">
+                                                    <select name="Pais" id="pais">
+                                                        <optgroup>Selecione el departamento</optgroup>
+                                                    </select>
+                                                    <label for="pais">Departamento:</label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div id="error-popover-departameno" style="display:none;">
+                                                    <a href="#" title="Separtameno" data-toggle="popover" data-placement="top" data-trigger="focus" data-content="Seleccione su departameno de recidencia."><i class="glyphicon glyphicon-remove-circle" style="color:red; font-size:x-large"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    <table border="0" style="width:100%" cellpadding="2" cellspacing="4">
+                                        <tr>
+                                            <td><i class="glyphicon glyphicon-lock"></i></td>
+                                            <td>&nbsp;&nbsp;</td>
+                                            <td>
+                                                <div class="input-field">
+                                                    <select id="ciudad" name="IdCiudad">
+                                                    </select>
+                                                     <label for="ciudad">Ciudad:</label>
+                                                </div>
+                                            </td>                                                
+                                            <td>
+                                                    <div id="error-popover-ciudad" style="display:none;">
+                                                        <a href="#" title="Ciudad" data-toggle="popover" data-placement="top" data-trigger="focus" data-content="Selecciones su ciudad de recidencia."><i class="glyphicon glyphicon-remove-circle" style="color:red; font-size:x-large"></i></a>
+                                                    </div>
+                                                </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div><!--part2-->                           
+                        <div id="part3"  class="part3">
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    <table border="0" style="width:100%" cellpadding="2" cellspacing="4">
+                                        <tr>
+                                            <td><i class="glyphicon glyphicon-lock"></i></td>
+                                            <td>&nbsp;&nbsp;</td>
+                                            <td>
+                                                <div class="input-field">
+                                                    <input type="password" id="pass" required onkeyup="validate();"
+                                                    Onblur="validate();" name="Clave"/>
+                                                    <label for="pass">Contraseña:</label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div id="error-popover-pass" style="display:none;">
+                                                    <a href="#" title="Contraseña" data-toggle="popover" data-placement="top" data-trigger="focus" data-content="La Contrsaseña debe tener almenos 6 carcteres."><i class="glyphicon glyphicon-remove-circle" style="color:red; font-size:x-large"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    <table border="0" style="width:100%" cellpadding="2" cellspacing="4">
+                                        <tr>
+                                            <td><i class="glyphicon glyphicon-lock"></i></td>
+                                            <td>&nbsp;&nbsp;</td>
+                                            <td>
+                                                <div class="input-field">
+                                                    <input type="password" id="pass2" required  onkeyup="validate();" Onblur="validate();"/>
+                                                    <label for="pass2">Repetir contraseña:</label>
+                                                </div>
+                                            </td>                                                
+                                            <td>
+                                                    <div id="error-popover-pass2" style="display:none;">
+                                                        <a href="#" title="Contraseña" data-toggle="popover" data-placement="top" data-trigger="focus" data-content="Las Contrsaseñas no coinciden."><i class="glyphicon glyphicon-remove-circle" style="color:red; font-size:x-large"></i></a>
+                                                    </div>
+                                                </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div><!--part3-->                        
+                        <div id="part4"  class="part4">
+                            <div class="form-group">
+                                <div class="col-lg-10">                                       
+                                   <div class="terminos"> 
+                                       <b style="color: white;text-transform: uppercase; width: 100%;">Terminos y condiciones de uso</b>
+                                       <br>
+                                       <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                                   </div>
+                                </div>
+                            </div>    
+                            
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    <span class="pull-right" style="width: 50%;">
+                                        <input type="checkbox" id="terminos" style="width: 50%;  width: initial">
+                                        <b>
+                                            Acepto terminos y condiciones de uso
+                                        </b> 
+                                    </span>  <br><br><br>
+                                <table border="0" style="width:100%" cellpadding="2" cellspacing="4">
+                                    <tr>
+                                        <td><i class="glyphicon glyphicon-qrcode"></i></td>
+                                        <td>&nbsp;&nbsp;</td>
+                                        <td>
+                                            <div class="input-field">
+                                                <input type="text" id="MiCodigoPromocional" name="MiCodigoPromocional" required />
+                                                <label for="MiCodigoPromocional">Codigo Promocional</label>
+                                            </div>
+                                        </td> 
+                                    </tr>
+                                </table>
+                            </div>      
+                        </div>               
+                        </div><!--part4-->
+                        <br />
+                        <br />
+                        <div class="text-center">
+                            <a class="ziel-button active" style="width:80%" onclick="return next()">Siguiente <i class="glyphicon glyphicon-menu-right"></i></a>
+                       </div>
+                        <br />
+                        <br />
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </form>
+        </p>
+        
+        <div class="panel-footer"  style="height:100%">
+                <table border="0" style="width:100%" cellpadding="2" cellspacing="4">
+                        <tbody>
+                            <tr>
+                            <td width="5%" style="display:none" id="goBack" onclick="back();">
+                                <img id="profile-img" src="../images/FlechaBack.png" class="img-responsive" alt="Responsive image">
+                            </td>
+                            <td width="20%"  align="center"><img id="_image" src="../images/correoFull.png" class="img-responsive" alt="Responsive image"></td>
+                            <td width="30%"><img id="_step" src="../images/step1.png" class="img-responsive" alt="Responsive image"></td>
+                            <td>
+                                <div class="col-lg-10">
+                                    <span class="ziel-label-bold"  id="_title" >Contacto</span><br>
+                                    <span class="small"  id="_text" >Te enviaremos un mensaje con un código de validación</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody></table>
+        </div>
+    </div>
+    <script type="text/javascript" src="../scripts/platformOverrides.js"></script>
+    <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        })
+    </script>
+</body>
+<!---->
+    <div class="modal" id="gr3">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content  bg-white">
+        <center>
+            <br>
+            <img id="_step" src="../images/Xblue.png" class="img-responsive" alt="Responsive image"> 
+            <span style="color: black;font-size: X-large;">Información Inválida</span>         
+        </center>
+        <div class="modal-body">
+            <p id="_msj"> </p>    
+            <center>
+                <button class="btn ziel-button overflow-bottom active" data-dismiss="modal">Aceptar</button>        
+            </center>
+        </div>
+    </div>
+  </div>
+</div>
+<span id="launcher" data-toggle="modal" data-target="#gr3"></span>

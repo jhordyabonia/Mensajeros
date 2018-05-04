@@ -1,0 +1,556 @@
+﻿<html><head>
+    
+    <link href="../lib/Loading/loading.min.css" rel="stylesheet">
+    <script src="../lib/Loading/jquery.loading.min.js"></script>
+    <script src="../lib/Loading/loading.min.js"></script>
+    <script src="../scripts/ziel-usuario.js"></script>
+    <script src="../scripts/ziel-redirect.js"></script>
+    <script src="../scripts/ziel-validator.js"></script>
+    <script src="../scripts/ziel-validator-registro.js"></script>
+    <link href="../css/ziel.mensajeros.css" rel="stylesheet">
+    <link href="../css/ziel.mensajeros.registro.css" rel="stylesheet">
+    <!--
+        Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
+        For details, see http://go.microsoft.com/fwlink/?LinkID=617521
+    -->
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data:">
+
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <link href="../lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+
+    <link href="../lib/Loading/loading.min.css" rel="stylesheet">
+    <script src="../lib/Loading/jquery.loading.min.js"></script>
+    <script src="../lib/Loading/loading.min.js"></script>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <style class="cp-pen-styles">
+        * {
+            /*font-family: courier;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;*/
+        }
+        .menu {
+            width: 250px;
+            height: 100%;
+            position: fixed;
+            background-color: seagreen;
+            -webkit-transition: all 1s;
+            transition: all 1s;
+            left: 0;
+            z-index: 50;
+            overflow-y: auto;
+            padding-bottom: 100px;
+        }
+
+            .menu.closed {
+                left: -250px;
+            }
+
+        #toggle {
+            background-color: seagreen;
+            height: 80%;
+            min-height: 100%;
+            width: 0px;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0px;
+            z-index: 25;
+            -webkit-transition: all .7s ease;
+            transition: all .7s ease;
+        }
+
+            #toggle:hover {
+                cursor: pointer;
+            }
+
+            #toggle.closed {
+                left: 0px;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                width: 100%;
+                height: 80%;
+                opacity: .3;
+            }
+
+        .content {
+            width: 100%;
+            height: 80%;
+            margin-left: 0px;
+            -webkit-transition: all .4s;
+            transition: all .4s;
+        }
+
+            .content.closed .text {
+                -webkit-transform: translateX(80px);
+                -ms-transform: translateX(80px);
+                transform: translateX(80px);
+            }
+
+        .text {
+            width: 60%;
+            margin: auto;
+            -webkit-transition: all .4s ease;
+            transition: all .4s ease;
+            margin-top: 80px;
+            margin-bottom: 80px;
+        }
+
+        h1,
+        h2 {
+            color: #444;
+        }
+
+        p {
+            color: #444;
+        }
+
+            p img {
+                float: left;
+                margin: 15px;
+            }
+
+        .menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 85px 0 0 40px;
+            padding-right: 40px;
+        }
+
+           .menu ul li {
+                    color: #bec0c5;
+                    /* font-size: 20px; */
+                    margin: 0 0 3px 0;
+                    display: block;
+                    /* height: 40px; */
+                    line-height: 40px;
+                    padding-left: 10px;
+                    -webkit-transition: all .3s;
+                    transition: all .3s;
+                }
+
+                .menu ul li:hover {
+                    background-color: #3bb16f;
+                    cursor: pointer;
+                }
+
+        #wrapper {
+            height: 100%;
+            min-height: 100%;
+            position: fixed;
+            overflow-y: auto;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+            #wrapper.closed {
+                position: fixed;
+            }
+
+        hr {
+            border: none;
+            height: 1px;
+            background-color: seagreen;
+            position: relative;
+            width: 90%;
+            margin-left: 0;
+        }
+
+            hr:before {
+                content: "/";
+                display: block;
+                top: -8px;
+                left: -5px;
+                position: absolute;
+                color: seagreen;
+            }
+
+        *::-moz-selection {
+            background-color: #1b5233;
+            color: floralwhite;
+        }
+
+        *::selection {
+            background-color: #1b5233;
+            color: floralwhite;
+        }
+        
+input, textarea {
+    color: #464545;
+    border-bottom: 1px solid white!important;
+}
+.part0  {
+    display: none;
+}
+    </style>
+    <title>Mensajeros.co</title>
+</head>
+<body class="bg" style="background-repeat: initial !important;">
+    
+    <div id="toggle" class=""><i class="glyphicon glyphicon-list" style="font-size:x-large;z-index: 200;padding: 10px;"></i></div>
+    <div class="menu closed" style="background-image: url('../images/bg_.png');">
+        <div class="text-center">
+            <img id="profile-img" src="../images/LogoMediano.png" class="img-responsive center-block" alt="Responsive image" style="
+    margin-top: 20px;
+">
+    <br>
+    <div style="
+    margin-top: 5px;
+    margin-right: 10px;
+    color: #c1ef51;
+">Cupón promocional</div>
+    <div style="
+    font-size: 12px;
+">Si cuentas con algún cupón promocional validalo en el siguiente campo
+        </div></div>
+        <ul style="
+        padding: 0;
+        margin-top: 67px;
+        margin-left: 16px;
+        font-size: large;
+    ">
+    <li><u style="
+        color: #c1ef51;
+    ">Cambiar nombre<u></u></u></li>
+            <li onclick="step(0);">Datos de contacto</li>
+            <li onclick="step(1);">Cambiar ubicación</li>
+            <li onclick="step(2);">Cambiar Contraseña</li>
+            <li onclick="step(3);">Otras configuraciones</li>
+        </ul>
+    
+    <div class="text-center" style="
+    margin-top: 68px;
+    font-weight: 700;
+    margin-left: -23px;
+">
+    <p style="
+    margin-top: 5px;
+    margin-right: 10px;
+    color: #c1ef51;
+">José Flover Ayala</p>
+<p style="
+    font-size: 10px;
+    color: bec0c5;
+    margin-top: -5px;
+    margin-left: -8px;
+"><span style="
+    color: #c1ef51;
+">Email:</span>mateo78456gmail.com<br>
+    <span style="
+    color: #c1ef51;
+">cel.</span>317 266 2324</p>
+            <p style="
+    margin-top: 14px;
+    margin-right: -14px;
+    color: #c1ef51;
+">Cerrar sesión.</p>
+
+
+</div>
+    </div>
+    <div id="wrapper" class="">
+            <div class="panel panel-default">
+        <p class="panel-body">
+            </p><form id="form_singup" method="POST">  
+            <div class="modal fade bs-example-modal-sm modal-dialog" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-exclamation-sign" style="font-size:x-large"></i>&nbsp;&nbsp;&nbsp;Información</h4>
+                        </div>
+                        <div class="modal-body small">
+                            <div id="modal-mensaje"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary center-block" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="text-center">
+                <img id="profile-img" src="../images/LogoMediano.png" class="img-responsive center-block" alt="Responsive image">
+                <span class="ziel-label-bold">Log-Up</span>
+            </div>
+            <br>
+            <div class="jumbotron">
+                <div class="container">
+                    <div class="box">
+                      <div id="part0" class="">
+                        <div class="form-group">
+                            <div class="col-lg-10">
+                                <table border="0" style="width:100%" cellpadding="2" cellspacing="4">
+                                    <tbody><tr>
+                                        <td><i class="glyphicon glyphicon-user"></i></td>
+                                        <td>&nbsp;&nbsp;</td>
+                                        <td>
+                                            <div class="input-field">
+                                                <input type="text" id="nombres" name="Nombres" required="" onkeyup="validate();" onblur="validate();" style="
+    border-bottom: 1px solid white;
+">
+                                                <label for="nombres">Nombres:</label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div id="error-popover-nombres" style="display:none;">
+                                                <a href="#" title="" data-toggle="popover" data-placement="top" data-trigger="focus" data-content="el nombre no debe estar vacío." data-original-title="Nombre"><i class="glyphicon glyphicon-remove-circle" style="color:red; font-size:x-large"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody></table>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-10">
+                                <table border="0" style="width:100%" cellpadding="2" cellspacing="4">
+                                    <tbody><tr>
+                                        <td><i class="glyphicon glyphicon-user"></i></td>
+                                        <td>&nbsp;&nbsp;</td>
+                                        <td>
+                                            <div class="input-field">
+                                                <input type="text" id="apellidos" name="Apellidos" required="" onkeyup="validate();" onblur="validate();">
+                                                <label for="apellidos">Apellidos:</label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div id="error-popover-apellidos" style="display:none;">
+                                                <a href="#" title="" data-toggle="popover" data-placement="top" data-trigger="focus" data-content="El apellido no debe estar vacío." data-original-title="Apellidos"><i class="glyphicon glyphicon-remove-circle" style="color:red; font-size:x-large"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody></table>
+                            </div>
+                        </div>
+                    </div><!--part0-->
+                    <div id="part1" class="part1">
+                            <div class="form-group">
+                                    <div class="col-lg-10">
+                                        <table border="0" style="width:100%" cellpadding="2" cellspacing="4">
+                                            <tbody><tr>
+                                                <td><i class="glyphicon glyphicon-envelope"></i></td>
+                                                <td>&nbsp;&nbsp;</td>
+                                                <td>
+                                                    <div class="input-field">
+                                                        <input type="hidden" name="Cedula" value="0001">
+                                                        <input type="hidden" name="DireccionPrincipal" value="0001">
+                                                        <input type="hidden" id="usuario" name="Usuario">
+                                                        <input type="text" id="correo" onkeyup="validate();" name="Correo" required="" onblur="validate();">
+                                                        <label for="correo">Correo:</label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div id="error-popover-correo" style="display:none;">
+                                                        <a href="#" title="" data-toggle="popover" data-placement="top" data-trigger="focus" data-content="El correo ingresado contiene una sintaxis incorrecta." data-original-title="Correo"><i class="glyphicon glyphicon-remove-circle" style="color:red; font-size:x-large"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody></table>
+                                    </div>
+                                </div>
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    <table border="0" style="width:100%" cellpadding="2" cellspacing="4">
+                                        <tbody><tr>
+                                            <td><i class="glyphicon glyphicon-phone"></i></td>
+                                            <td>&nbsp;&nbsp;</td>
+                                            <td>
+                                                <div class="input-field">
+                                                    <input type="tel" id="cel" onblur="return validate();" required="" onkeyup="validate();" name="Telefono">
+                                                    <label for="cel">Celular:</label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div id="error-popover-cel" style="display:none;">
+                                                    <a href="#" title="" data-toggle="popover" data-placement="top" data-trigger="focus" data-content="El numero celular, debe tener almenos 10 digitos e iniciar con el numero 3" data-original-title="Celular"><i class="glyphicon glyphicon-remove-circle" style="color:red; font-size:x-large"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div>
+                            </div>
+                        </div><!--part1-->
+                        <div id="part2" class="part2">
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    <table border="0" style="width:100%" cellpadding="2" cellspacing="4">
+                                        <tbody><tr>
+                                            <td><i class="glyphicon glyphicon-lock"></i></td>
+                                            <td>&nbsp;&nbsp;</td>
+                                            <td>
+                                                <div class="input-field">
+                                                    <select name="Pais" id="pais">
+                                                        <optgroup>Selecione el departamento</optgroup>
+                                                    </select>
+                                                    <label for="pais">Departamento:</label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div id="error-popover-departameno" style="display:none;">
+                                                    <a href="#" title="" data-toggle="popover" data-placement="top" data-trigger="focus" data-content="Seleccione su departameno de recidencia." data-original-title="Separtameno"><i class="glyphicon glyphicon-remove-circle" style="color:red; font-size:x-large"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    <table border="0" style="width:100%" cellpadding="2" cellspacing="4">
+                                        <tbody><tr>
+                                            <td><i class="glyphicon glyphicon-lock"></i></td>
+                                            <td>&nbsp;&nbsp;</td>
+                                            <td>
+                                                <div class="input-field">
+                                                    <select id="ciudad" name="IdCiudad">
+                                                    </select>
+                                                     <label for="ciudad">Ciudad:</label>
+                                                </div>
+                                            </td>                                                
+                                            <td>
+                                                    <div id="error-popover-ciudad" style="display:none;">
+                                                        <a href="#" title="" data-toggle="popover" data-placement="top" data-trigger="focus" data-content="Selecciones su ciudad de recidencia." data-original-title="Ciudad"><i class="glyphicon glyphicon-remove-circle" style="color:red; font-size:x-large"></i></a>
+                                                    </div>
+                                                </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div>
+                            </div>
+                        </div><!--part2-->                           
+                        <div id="part3" class="part3">
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    <table border="0" style="width:100%" cellpadding="2" cellspacing="4">
+                                        <tbody><tr>
+                                            <td><i class="glyphicon glyphicon-lock"></i></td>
+                                            <td>&nbsp;&nbsp;</td>
+                                            <td>
+                                                <div class="input-field">
+                                                    <input type="password" id="pass" required="" onkeyup="validate();" onblur="validate();" name="Clave">
+                                                    <label for="pass">Contraseña:</label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div id="error-popover-pass" style="display:none;">
+                                                    <a href="#" title="" data-toggle="popover" data-placement="top" data-trigger="focus" data-content="La Contrsaseña debe tener almenos 6 carcteres." data-original-title="Contraseña"><i class="glyphicon glyphicon-remove-circle" style="color:red; font-size:x-large"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    <table border="0" style="width:100%" cellpadding="2" cellspacing="4">
+                                        <tbody><tr>
+                                            <td><i class="glyphicon glyphicon-lock"></i></td>
+                                            <td>&nbsp;&nbsp;</td>
+                                            <td>
+                                                <div class="input-field">
+                                                    <input type="password" id="pass2" required="" onkeyup="validate();" onblur="validate();">
+                                                    <label for="pass2">Repetir contraseña:</label>
+                                                </div>
+                                            </td>                                                
+                                            <td>
+                                                    <div id="error-popover-pass2" style="display:none;">
+                                                        <a href="#" title="" data-toggle="popover" data-placement="top" data-trigger="focus" data-content="Las Contrsaseñas no coinciden." data-original-title="Contraseña"><i class="glyphicon glyphicon-remove-circle" style="color:red; font-size:x-large"></i></a>
+                                                    </div>
+                                                </td>
+                                        </tr>
+                                    </tbody></table>
+                                </div>
+                            </div>
+                        </div><!--part3-->                        
+                        <div id="part4" class="part4">
+                            <div class="form-group">
+                                <div class="col-lg-10">                                       
+                                   <div class="terminos"> 
+                                       <b style="color: white;text-transform: uppercase; width: 100%;">Terminos y condiciones de uso</b>
+                                       <br>
+                                       <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                                   </div>
+                                </div>
+                            </div>    
+                            
+                            <div class="form-group">
+                                <div class="col-lg-10">
+                                    <span class="pull-right" style="width: 50%;">
+                                        <input type="checkbox" id="terminos" style="width: 50%;  width: initial">
+                                        <b>
+                                            Acepto terminos y condiciones de uso
+                                        </b> 
+                                    </span>  <br><br><br>
+                                <table border="0" style="width:100%" cellpadding="2" cellspacing="4">
+                                    <tbody><tr>
+                                        <td><i class="glyphicon glyphicon-qrcode"></i></td>
+                                        <td>&nbsp;&nbsp;</td>
+                                        <td>
+                                            <div class="input-field">
+                                                <input type="text" id="MiCodigoPromocional" name="MiCodigoPromocional" required="">
+                                                <label for="MiCodigoPromocional">Codigo Promocional</label>
+                                            </div>
+                                        </td> 
+                                    </tr>
+                                </tbody></table>
+                            </div>      
+                        </div>               
+                        </div><!--part4-->
+                        <br>
+                        <br>
+                        <div class="text-center">
+                            <a class="ziel-button active" style="width:80%" onclick="return next()">Guardar<i class="glyphicon glyphicon-save"></i></a>
+                       </div>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <p></p>
+        
+        <div class="panel-footer" style="height:100%">
+                <table border="0" style="width:100%" cellpadding="2" cellspacing="4">
+                        <tbody>
+                            <tr>
+                            <td width="5%" style="display:none" id="goBack" onclick="back();">
+                                <img id="profile-img" src="../images/FlechaBack.png" class="img-responsive" alt="Responsive image">
+                            </td>
+                            <td width="20%" align="center"><img id="_image" src="../images/correoFull.png" class="img-responsive" alt="Responsive image"></td>
+                            <td width="30%"><img id="_step" src="../images/step1.png" class="img-responsive" alt="Responsive image"></td>
+                            <td>
+                                <div class="col-lg-10">
+                                    <span class="ziel-label-bold" id="_title">Contacto</span><br>
+                                    <span class="small" id="_text">Te enviaremos un mensaje con un código de validación</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody></table>
+        </div>
+    </div>
+    <script type="text/javascript" src="../scripts/platformOverrides.js"></script>
+    <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        })
+    </script>
+    </div>
+    <script>
+        $("#toggle").click(function () {
+            $(".menu").toggleClass("closed");
+            $(this).toggleClass("closed");
+            $(".content").toggleClass("closed");
+            $("#wrapper").toggleClass("closed")
+        });
+    </script>
+
+
+</body></html>
