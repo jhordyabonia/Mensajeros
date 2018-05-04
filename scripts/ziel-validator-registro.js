@@ -354,18 +354,27 @@ function cambio_departamento(id)
     function show()
     { $('#ciudad').html(popup.response);}
 }            
-var _MENU;                        
+var _MENU=new XMLHttpRequest();                        
 function menu()
 {
-    /**Instancio y configuro y envio solicitud al Api-rest*/
-    var menu=new XMLHttpRequest();
-    menu.open("GET", 'menu_.html', true);
-    menu.addEventListener('load',show,false);
-    menu.send();
-    function show()
-    {
-        _MENU=menu.response;
-       //$('#pais').html(menu.response);
-       //$('#pais')[0].onchange=function(){cambio_departamento($('#pais').val());}
-    }
+    /**Configuro y envio solicitud al Api-rest*/
+    _MENU.open("GET", 'menu.html', true);
+    _MENU.addEventListener('load',showMenu,false);
+    _MENU.send();
+}
+function showMenu()
+{
+    //_MENU=_MENU.response;
+    document.getElementById("menu_content").innerHTML=_MENU.response;
+    //$("#menu_content").html(_MENU.response);
+    loadMenu();
+}
+function loadMenu()
+{
+    $("#toggle").click(function () {
+        $(".menu").toggleClass("closed");
+        $(this).toggleClass("closed");
+        $(".content").toggleClass("closed");
+        $("#wrapper").toggleClass("closed")
+    });
 }
