@@ -353,4 +353,19 @@ function cambio_departamento(id)
     popup.send(data);
     function show()
     { $('#ciudad').html(popup.response);}
-}                                     
+}            
+var _MENU;                        
+function menu()
+{
+    /**Instancio y configuro y envio solicitud al Api-rest*/
+    var menu=new XMLHttpRequest();
+    menu.open("GET", 'menu_.html', true);
+    menu.addEventListener('load',show,false);
+    menu.send();
+    function show()
+    {
+        _MENU=menu.response;
+       //$('#pais').html(menu.response);
+       //$('#pais')[0].onchange=function(){cambio_departamento($('#pais').val());}
+    }
+}
